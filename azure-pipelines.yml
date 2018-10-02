@@ -52,7 +52,6 @@ steps:
     projects: '**/*.csproj'
     arguments: '--output $(Build.ArtifactStagingDirectory)'
 
-steps:
 - task: NuGetCommand@2
   displayName: 'NuGet push'
   inputs:
