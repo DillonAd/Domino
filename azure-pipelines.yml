@@ -50,3 +50,11 @@ steps:
     command: pack
     projects: '**/*.csproj'
     arguments: '--output $(Build.ArtifactStagingDirectory)'
+
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: push
+    nuGetFeedType: external
+    publishFeedCredentials: DillonAd
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
