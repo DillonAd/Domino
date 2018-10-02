@@ -44,13 +44,8 @@ steps:
 - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
   displayName: 'Publish Quality Gate Result'
 
-- script: 'dotnet pack --version-suffix "snapshot.$(Build.BuildNumber)" --output $(Build.ArtifactStagingDirectory)' 
-  displayName: 'Command Line Script - Package'
-
-- task: NuGetCommand@2
-  displayName: 'NuGet push'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: $(Build.BuildNumber)'
   inputs:
-    command: push
-    nuGetFeedType: external
-    publishFeedCredentials: DillonAd
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    PathtoPublish: '$(Build.SourcesDirectory)'
+    ArtifactName: '$(Build.BuildNumber)'
