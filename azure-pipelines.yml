@@ -44,14 +44,8 @@ steps:
 - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
   displayName: 'Publish Quality Gate Result'
 
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet pack'
-  inputs:
-    command: pack
-    projects: '**/*.csproj'
-    configuration: '$(BuildConfiguration)'
-    packDirectory: '$(Build.ArtifactStagingDirectory)'
-    versioningScheme: byBuildNumber
+- script: 'dotnet pack --version-suffix $(Build.BuildNumber) --output $(Build.ArtifactStagingDirectory)' 
+  displayName: 'Command Line Script - Package'
 
 - task: NuGetCommand@2
   displayName: 'NuGet push'
