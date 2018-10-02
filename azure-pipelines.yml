@@ -49,12 +49,12 @@ steps:
   inputs:
     command: pack
     projects: '**/*.csproj'
-    arguments: '--output $(Build.ArtifactStagingDirectory)'
+    arguments: '--output $(Build.ArtifactStagingDirectory) --version-suffix $(Build.BuildId)'
 
-- task: NuGetCommand@2
-  displayName: 'NuGet push'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet push'
   inputs:
     command: push
     nuGetFeedType: external
     publishFeedCredentials: DillonAd
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+
