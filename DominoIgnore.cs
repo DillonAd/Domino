@@ -7,7 +7,7 @@ namespace domino
 {
     [Command(Name = "ignore", Description = "Adds file pattern to the .dominoignore")]
     [HelpOption]
-    public class Domino_Ignore
+    public class DominoIgnore
     {
         [Argument(0, Name = "pattern")]
         [Required]

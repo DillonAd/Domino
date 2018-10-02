@@ -9,7 +9,7 @@ namespace domino
 {
     [Command(Name = "start", Description = "Starts the file watcher.")]
     [HelpOption]
-    public class Domino_Start
+    public class DominoStart
     {
         [Argument(0, Name = "script", ShowInHelpText = true, Description = "Script to execute on file change.")]
         [Required]

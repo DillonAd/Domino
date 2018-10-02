@@ -5,8 +5,8 @@ namespace domino
     [Command(Name = "domino", Description = "Domino is a file watcher that runs a custom script when changes occur.")]
     [VersionOption("GetVersion")]
     [HelpOption]
-    [Subcommand("start", typeof(Domino_Start))]
-    [Subcommand("ignore", typeof(Domino_Ignore))]
+    [Subcommand("start", typeof(DominoStart))]
+    [Subcommand("ignore", typeof(DominoIgnore))]
     public class Domino
     {
         public static string GetVersion() =>

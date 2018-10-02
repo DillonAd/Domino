@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace domino
 {
-    public class WatcherHost : IHostedService, IDisposable
+    public sealed class WatcherHost : IHostedService, IDisposable
     {
         private readonly FileSystemWatcher _watcher;
         private readonly ICommander _commander;

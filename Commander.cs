@@ -10,9 +10,9 @@ namespace domino
     {
         private readonly string _scriptName;
         private readonly ILogger _logger;
+        private readonly ProcessStartInfo _processStartInfo;
 
         private Process _process;
-        private ProcessStartInfo _processStartInfo;
         private CancellationTokenSource _cancellationTokenSource;
         private Task _executionTask;
 
