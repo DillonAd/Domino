@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="azure-pipelines.yml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.2.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.1.1" />
