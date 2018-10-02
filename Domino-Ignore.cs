@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace domino
 {
-    [Command(Name = "ignore")]
+    [Command(Name = "ignore", Description = "Adds file pattern to the .dominoignore")]
     [HelpOption]
     public class Domino_Ignore
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace domino
 {
-    [Command(Name = "start", Description = "My global command line tool.")]
+    [Command(Name = "start", Description = "Starts the file watcher.")]
     [HelpOption]
     public class Domino_Start
     {

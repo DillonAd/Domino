@@ -2,7 +2,7 @@ using McMaster.Extensions.CommandLineUtils;
 
 namespace domino
 {
-    [Command(Name = "domino", Description = "My global command line tool.")]
+    [Command(Name = "domino", Description = "Domino is a file watcher that runs a custom script when changes occur.")]
     [VersionOption("GetVersion")]
     [HelpOption]
     [Subcommand("start", typeof(Domino_Start))]
@@ -14,5 +14,11 @@ namespace domino
 
         public static void Main(string[] args) =>
             CommandLineApplication.ExecuteAsync<Domino>(args);
+
+        private int OnExecute(CommandLineApplication app)
+        {
+            app.ShowHelp();
+            return 1;
+        }   
     }
 }
