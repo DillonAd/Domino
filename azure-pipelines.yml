@@ -44,3 +44,19 @@ steps:
 
 - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
   displayName: 'Publish Quality Gate Result'
+
+- task: DotNetCoreCLI@2
+  displayName: Package
+  inputs:
+    command: pack
+    projects: '**/*.csproj'
+    arguments: '--output $(Build.ArtifactStagingDirectory)'
+
+steps:
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: push
+    nuGetFeedType: external
+    publishFeedCredentials: DillonAd
+
