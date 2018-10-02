@@ -13,6 +13,11 @@
 
   <ItemGroup>
     <None Remove=".gitignore" />
+    <None Remove="azure-pipelines.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="azure-pipelines.yml" />
   </ItemGroup>
 
   <ItemGroup>
