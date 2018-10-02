@@ -49,7 +49,7 @@ steps:
   inputs:
     command: pack
     projects: '**/*.csproj'
-    arguments: '--output $(Build.ArtifactStagingDirectory) --version-suffix $(Build.BuildId)'
+    arguments: '--version-suffix $(Build.BuildId) --output $(Build.ArtifactStagingDirectory)'
 
 - task: NuGetCommand@2
   displayName: 'NuGet push'
