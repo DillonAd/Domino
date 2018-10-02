@@ -25,7 +25,6 @@ steps:
     extraProperties: |
      sonar.cs.opencover.reportsPaths="$(Build.SourcesDirectory)\opencover.xml"
 
-
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
@@ -51,4 +50,3 @@ steps:
     command: pack
     projects: '**/*.csproj'
     arguments: '--output $(Build.ArtifactStagingDirectory)'
-
