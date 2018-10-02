@@ -45,11 +45,13 @@ steps:
   displayName: 'Publish Quality Gate Result'
 
 - task: DotNetCoreCLI@2
-  displayName: Package
+  displayName: 'dotnet pack'
   inputs:
     command: pack
     projects: '**/*.csproj'
-    arguments: '--version-suffix $(Build.BuildId) --output $(Build.ArtifactStagingDirectory)'
+    configuration: '$(BuildConfiguration)'
+    packDirectory: '$(Build.ArtifactStagingDirectory)'
+    versioningScheme: byBuildNumber
 
 - task: NuGetCommand@2
   displayName: 'NuGet push'
