@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "domino", "Domino\domino.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5F7F965F-BBC0-4892-99A6-AAF9BFFCE52D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domino.Test.Unit", "Tests\domino.Test.Unit\domino.Test.Unit.csproj", "{93B9424B-1645-4F95-ABB5-9765F4B245F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "domino.Test.Unit", "Tests\domino.Test.Unit\domino.Test.Unit.csproj", "{93B9424B-1645-4F95-ABB5-9765F4B245F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "domino.Test.Integration", "Tests\domino.Test.Integration\domino.Test.Integration.csproj", "{5101C422-DDF1-4605-B003-10EB32DCED80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,18 +25,19 @@ Global
 		{93B9424B-1645-4F95-ABB5-9765F4B245F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93B9424B-1645-4F95-ABB5-9765F4B245F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93B9424B-1645-4F95-ABB5-9765F4B245F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07880CB8-3A2C-4617-9047-B0355F7D150B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07880CB8-3A2C-4617-9047-B0355F7D150B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07880CB8-3A2C-4617-9047-B0355F7D150B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07880CB8-3A2C-4617-9047-B0355F7D150B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5101C422-DDF1-4605-B003-10EB32DCED80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5101C422-DDF1-4605-B003-10EB32DCED80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5101C422-DDF1-4605-B003-10EB32DCED80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5101C422-DDF1-4605-B003-10EB32DCED80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {ACCC2C01-438C-47E0-82F9-3F3935067A6A}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{93B9424B-1645-4F95-ABB5-9765F4B245F2} = {5F7F965F-BBC0-4892-99A6-AAF9BFFCE52D}
+		{5101C422-DDF1-4605-B003-10EB32DCED80} = {5F7F965F-BBC0-4892-99A6-AAF9BFFCE52D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ACCC2C01-438C-47E0-82F9-3F3935067A6A}
 	EndGlobalSection
 EndGlobal
