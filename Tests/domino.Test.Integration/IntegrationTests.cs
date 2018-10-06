@@ -5,10 +5,6 @@ namespace domino.Test.Integration
 {
     public class IntegrationTests
     {
-        [Fact]
-        public void Test1()
-        {
 
-        }
     }
 }

@@ -22,3 +22,7 @@ This command will start the file watcher that will trigger the script on file ch
 
 This command will create a `.dominoignore` file in the current directory and add the specified file pattern to the file. 
 
+## Contributing
+
+Please check out the [Contributing Guide](http://github.com/DillonAd/Domino/blob/master/CONTRIBUTING.md)
+

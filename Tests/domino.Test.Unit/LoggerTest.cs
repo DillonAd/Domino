@@ -7,6 +7,7 @@ namespace domino.Test.Unit
     public class LoggerTest
     {
         [Fact]
+        [Trait("Category", "unit")]
         public void DebugNullMessageDoesntThrow()
         {
             var sut = new Logger();
@@ -15,6 +16,7 @@ namespace domino.Test.Unit
         }
 
         [Fact]
+        [Trait("Category", "unit")]
         public void DebugNullExceptionDoesntThrow()
         {
             var sut = new Logger();
