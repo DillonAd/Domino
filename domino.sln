@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "domino", "domino.csproj", "{7CF35BD2-E873-40DC-B326-7A68DE0ADDE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "domino", "Domino/domino.csproj", "{7CF35BD2-E873-40DC-B326-7A68DE0ADDE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
