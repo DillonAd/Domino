@@ -1,6 +1,6 @@
 # Domino
 
-[![Build Status](https://dev.azure.com/dillon-adams/GitHub/_apis/build/status/Domino)](https://dev.azure.com/dillon-adams/GitHub/_build/latest?definitionId=6)
+[![Build Status](https://dev.azure.com/dillon-adams/GitHub/_apis/build/status/Domino)](https://dev.azure.com/dillon-adams/GitHub/_build/latest?definitionId=6)  [![NuGet](https://img.shields.io/nuget/v/domino.svg)](https://www.nuget.org/packages/domino/)
 
 Domino is a file watcher that runs a custom script when changes occur.
 
@@ -25,4 +25,3 @@ This command will create a `.dominoignore` file in the current directory and add
 ## Contributing
 
 Please check out the [Contributing Guide](http://github.com/DillonAd/Domino/blob/master/CONTRIBUTING.md)
-
