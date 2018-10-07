@@ -27,3 +27,10 @@ steps:
     command: test
     projects: '**/*Test*/*.csproj'
     arguments: '--configuration $(BuildConfiguration) --filter "Category=unit" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Build.SourcesDirectory)/opencover.xml '
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: source'
+  inputs:
+    PathtoPublish: '$(Build.SourcesDirectory)'
+    ArtifactName: source
+
