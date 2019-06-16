@@ -42,7 +42,7 @@ steps:
   displayName: Test
   inputs:
     command: test
-    projects: '$(Parameters.Solution)'
+    projects: '$(Build.SourcesDirectory)/Tests/domino.Test.Unit/domino.Test.Unit.csproj'
     arguments: '--configuration $(BuildConfiguration) --filter "Category=unit" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Build.SourcesDirectory)/opencover.xml /p:Exclude="[xunit.*]*"'
 
 
