@@ -43,7 +43,7 @@ steps:
   inputs:
     command: test
     projects: '$(Build.SourcesDirectory)/Tests/domino.Test.Unit/domino.Test.Unit.csproj'
-    arguments: '--configuration $(BuildConfiguration) --filter "Category=unit" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Build.SourcesDirectory)/opencover.xml /p:Exclude="[xunit.*]*"'
+    arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Build.SourcesDirectory)/opencover.xml /p:Exclude="[xunit.*]*"'
 
 
 - task: SonarCloudAnalyze@1
