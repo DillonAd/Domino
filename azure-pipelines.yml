@@ -1,6 +1,5 @@
-﻿name: $(Build.BuildId)
-
 pool: Default
+name: $(Build.BuildId)
 
 trigger:
  - master
