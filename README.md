@@ -1,6 +1,6 @@
 # Domino
 
-[![Build Status](https://dev.azure.com/dillon-adams/GitHub/_apis/build/status/Domino)](https://dev.azure.com/dillon-adams/GitHub/_build/latest?definitionId=6)  [![NuGet](https://img.shields.io/nuget/v/domino.svg)](https://www.nuget.org/packages/domino/)
+[![Build Status](https://dev.azure.com/dillon-adams/GitHub/_apis/build/status/Domino)](https://dev.azure.com/dillon-adams/GitHub/_build/latest?definitionId=6) [![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=DillonAd_Domino&metric=coverage)](https://sonarcloud.io/dashboard?id=DillonAd_Domino) [![NuGet](https://img.shields.io/nuget/v/domino.svg)](https://www.nuget.org/packages/domino/)
 
 Domino is a file watcher that runs a custom script when changes occur.
 
