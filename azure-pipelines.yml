@@ -1,64 +1,92 @@
-pool: Default
 name: $(Build.BuildId)
-
 trigger:
- - master
-pr: none
-
+  - master
+pr:
+  - master
 variables:
-  buildConfiguration: 'Release'
-  Parameters.Solution: '$(Build.SourcesDirectory)/domino.sln'
+  Artifact.Prod: NuGet
 
-steps:
-- task: DotNetCoreInstaller@0
-  inputs:
-    version: 2.2.401
+stages:
+  - stage: Build
+    jobs:
+      - job: Build
+        pool: Default
+        variables:
+            buildConfiguration: 'Release'
+            Parameters.Solution: '$(Build.SourcesDirectory)/domino.sln'
+        steps:
+          - task: DotNetCoreInstaller@0
+            inputs:
+              version: 2.2.401
+  
+          - task: DotNetCoreCLI@2
+            displayName: Restore
+            inputs:
+              command: restore
+              projects: '$(Parameters.Solution)'
+  
+          - task: SonarCloudPrepare@1
+            displayName: 'Prepare analysis on SonarCloud'
+            condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+            inputs:
+              SonarCloud: Domino
+              organization: 'dillonad-github'
+              scannerMode: 'MSBuild'
+              projectKey: 'DillonAd_Domino'
+              projectName: Domino
+              extraProperties: 'sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/opencover.xml'
+  
+          - task: DotNetCoreCLI@2
+            displayName: Build
+            inputs:
+              projects: '$(Parameters.Solution)'
+              arguments: '--configuration $(BuildConfiguration) --no-restore'
+  
+          - task: DotNetCoreCLI@2
+            displayName: Test
+            inputs:
+              command: test
+              projects: '$(Build.SourcesDirectory)/Tests/domino.Test.Unit/domino.Test.Unit.csproj'
+              arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Build.SourcesDirectory)/opencover.xml /p:Exclude="[xunit.*]*"'
 
-- task: DotNetCoreCLI@2
-  displayName: Restore
-  inputs:
-    command: restore
-    projects: '$(Parameters.Solution)'
+          - task: SonarCloudAnalyze@1
+            displayName: 'Run Code Analysis'
+            condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      
+          - task: SonarCloudPublish@1
+            displayName: 'Publish Quality Gate Result'
+            condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+            inputs:
+              pollingTimeoutSec: '300'
 
-- task: SonarCloudPrepare@1
-  displayName: 'Prepare analysis on SonarCloud'
-  inputs:
-    SonarCloud: Domino
-    organization: 'dillonad-github'
-    scannerMode: 'MSBuild'
-    projectKey: 'DillonAd_Domino'
-    projectName: Domino
-    extraProperties: 'sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/opencover.xml'
+          - task: DotNetCoreCLI@2
+            displayName: Pack
+            condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+            inputs:
+              command: pack
+              projects: '$(Parameters.Solution)'
+              arguments: '--no-build --configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
 
-- task: DotNetCoreCLI@2
-  displayName: Build
-  inputs:
-    projects: '$(Parameters.Solution)'
-    arguments: '--configuration $(BuildConfiguration) --no-restore'
+          - publish: '$(Build.ArtifactStagingDirectory)'
+            condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+            artifact: '$(Artifact.Prod)'
 
-- task: DotNetCoreCLI@2
-  displayName: Test
-  inputs:
-    command: test
-    projects: '$(Build.SourcesDirectory)/Tests/domino.Test.Unit/domino.Test.Unit.csproj'
-    arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Build.SourcesDirectory)/opencover.xml /p:Exclude="[xunit.*]*"'
+  - stage: Deploy
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - deployment: NuGet
+        pool: 'Hosted VS2017'
+        environment: Production
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: NuGetToolInstaller@0
 
-
-- task: SonarCloudAnalyze@1
-  displayName: 'Run Code Analysis'
-  # This will fail on PR builds https://go.microsoft.com/fwlink/?linkid=862029
-  continueOnError: true
-
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
-  displayName: 'Publish Quality Gate Result'
-  # This will fail on PR builds https://go.microsoft.com/fwlink/?linkid=862029
-  continueOnError: true
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: source'
-  inputs:
-    PathtoPublish: '$(Build.SourcesDirectory)'
-    ArtifactName: source
-
+                - task: NuGetCommand@2
+                  displayName: 'NuGet Push'
+                  inputs:
+                    command: push
+                    nuGetFeedType: external
+                    publishFeedCredentials: DillonAd
+                    packagesToPush: '$(Pipeline.Workspace)/$(Artifact.Prod)/*.nupkg'
