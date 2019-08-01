@@ -4,6 +4,9 @@ namespace domino.Logging
 {
     public class Logger : ILogger
     {
+        public void Output(string message) =>
+            Console.WriteLine(message);
+
         public void Debug(string message) =>
             WriteLine(Format("Debug", message));
 
