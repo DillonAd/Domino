@@ -9,7 +9,7 @@
     <PackageProjectUrl>https://github.com/DillonAd/Domino</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DillonAd/Domino</RepositoryUrl>
     <PackageTags>File Watcher</PackageTags>
-    <VersionPrefix>0.0.1</VersionPrefix>
+    <VersionPrefix>0.0.2</VersionPrefix>
     <VersionSuffix></VersionSuffix>
     <PackageLicenseUrl>https://github.com/DillonAd/Domino/blob/master/LICENSE</PackageLicenseUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/DillonAd/Domino/master/domino.png</PackageIconUrl>

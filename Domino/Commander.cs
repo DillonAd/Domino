@@ -81,10 +81,10 @@ namespace domino
             _process = Process.Start(_processStartInfo);
             _process.EnableRaisingEvents = true;
 
-            _process.OutputDataReceived += (sender, args) => _logger.Info(args.Data);
+            _process.OutputDataReceived += (sender, args) => _logger.Output(args.Data);
             _process.BeginOutputReadLine();
 
-            _process.ErrorDataReceived += (sender, args) => _logger.Error(args.Data);
+            _process.ErrorDataReceived += (sender, args) => _logger.Output(args.Data);
             _process.BeginErrorReadLine();
 
             _process.Exited += (sender, args) =>
