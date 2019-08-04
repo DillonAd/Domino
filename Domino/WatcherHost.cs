@@ -9,42 +9,38 @@ namespace domino
 {
     public sealed class WatcherHost : IHostedService, IDisposable
     {
-        private readonly FileSystemWatcher _watcher;
         private readonly ICommander _commander;
-        private readonly ILogger _logger;
         private readonly IIgnorePatternCollection _ignorePatternCollection;
+        private readonly ILogger _logger;
+        private readonly IWatcher _watcher;
 
         private DateTime _lastFileChanged { get; set; }
 
-        public WatcherHost(ICommander commander, ILogger logger, IIgnorePatternCollection ignorePatternCollection)
+        public WatcherHost(ICommander commander, IIgnorePatternCollection ignorePatternCollection, ILogger logger, IWatcher watcher)
         {
             _commander = commander;
-            _logger = logger;
             _ignorePatternCollection = ignorePatternCollection;
-
-            _watcher = new FileSystemWatcher(Directory.GetCurrentDirectory());
-            _watcher.IncludeSubdirectories = true;
-
-            _watcher.NotifyFilter = NotifyFilters.LastWrite;
-            _watcher.Changed += FileChanged;
+            _logger = logger;
+            _watcher = watcher;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _watcher.EnableRaisingEvents = true;
+            _watcher.Start();
 
             return Task.CompletedTask;
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
-            _watcher.EnableRaisingEvents = false;
+            _watcher.Stop();
 
             return Task.CompletedTask;
         }
 
         public void Dispose()
         {
+            _watcher.Dispose();
             _commander.Dispose();
         }
 
