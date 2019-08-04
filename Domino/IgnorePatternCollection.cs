@@ -18,9 +18,11 @@ namespace domino
         {
             _logger = logger;
             _ignorePatterns = ignoreFile.Contents
-                                        .Select(ip => ip.Replace(".", "[.]")
-                                                        .Replace("*", ".*")
-                                                        .Replace("?", "."));
+                                        .Select(ip => "^" + 
+                                                      Regex.Escape(ip)
+                                                           .Replace(@"\*", ".*")
+                                                           .Replace(@"\?", ".") + 
+                                                      "$");
         }
 
         public bool ShouldIgnore(string fileName) =>
