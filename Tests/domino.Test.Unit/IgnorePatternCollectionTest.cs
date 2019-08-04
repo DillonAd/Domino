@@ -14,6 +14,7 @@ namespace domino.Test
         [InlineData("*File.log", "testFile.log")]
         [InlineData("te*le.log", "testFile.log")]
         [InlineData("testFile.l?g", "testFile.log")]
+        [Trait("Category", "unit")]
         public void ShouldIgnore(string pattern, string fileName)
         {
             // Assemble
@@ -40,6 +41,7 @@ namespace domino.Test
         [InlineData("*file.log", "testFile.log")]
         [InlineData("testfile.log", "testFile.log")]
         [InlineData("testFile.l?g", "testFile.lot")]
+        [Trait("Category", "unit")]
         public void ShouldNotIgnore(string pattern, string fileName)
         {
             // Assemble
