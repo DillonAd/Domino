@@ -22,6 +22,8 @@ namespace domino
             _ignorePatternCollection = ignorePatternCollection;
             _logger = logger;
             _watcher = watcher;
+
+            _watcher.FileChanged += FileChanged;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
