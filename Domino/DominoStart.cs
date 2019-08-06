@@ -22,10 +22,11 @@ namespace domino
                 .ConfigureServices((context, services) =>
                 {
                     services.AddTransient<ILogger, Logger>()
-                        .AddSingleton(options => new CommanderOptions(ScriptName))
-                        .AddSingleton<IIgnorePatternCollection, IgnorePatternCollection>()
-                        .AddSingleton<ICommander, Commander>()
-                        .AddHostedService<WatcherHost>();
+                            .AddSingleton(options => new CommanderOptions(ScriptName))
+                            .AddSingleton<IIgnorePatternCollection, IgnorePatternCollection>()
+                            .AddSingleton<ICommander, Commander>()
+                            .AddSingleton<IWatcher, Watcher>()
+                            .AddHostedService<WatcherHost>();
                 });
 
             return hostBuilder;
