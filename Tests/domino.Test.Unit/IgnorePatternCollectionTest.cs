@@ -10,7 +10,6 @@ namespace domino.Test
         [InlineData("*.log", "testFile.log")]
         [InlineData("*og", "testFile.log")]
         [InlineData("test*.log", "testFile.log")]
-        [InlineData("*.log", "testFile.log")]
         [InlineData("*File.log", "testFile.log")]
         [InlineData("te*le.log", "testFile.log")]
         [InlineData("testFile.l?g", "testFile.log")]
