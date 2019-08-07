@@ -1,7 +1,5 @@
 ﻿using domino.Logging;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -9,14 +7,10 @@ namespace domino
 {
     public class IgnorePatternCollection : IIgnorePatternCollection
     {
-        private const string IgnoreFileName = ".dominoignore";
-
-        private readonly ILogger _logger;
         private readonly IEnumerable<string> _ignorePatterns;
 
-        public IgnorePatternCollection(IIgnoreFile ignoreFile, ILogger logger)
+        public IgnorePatternCollection(IIgnoreFile ignoreFile)
         {
-            _logger = logger;
             _ignorePatterns = ignoreFile.Contents
                                         .Select(ip => "^" + 
                                                       Regex.Escape(ip)
