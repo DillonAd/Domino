@@ -10,21 +10,23 @@ namespace domino.Test
         [InlineData("*.log", "testFile.log")]
         [InlineData("*og", "testFile.log")]
         [InlineData("test*.log", "testFile.log")]
-        [InlineData("*.log", "testFile.log")]
         [InlineData("*File.log", "testFile.log")]
         [InlineData("te*le.log", "testFile.log")]
         [InlineData("testFile.l?g", "testFile.log")]
+        [InlineData("*_Layout.cshtml", "Views/Shared/_Layout.cshtml")]
+        [InlineData("*_Layout.cshtml", @"Views\Shared\_Layout.cshtml")]
+        [InlineData("*Layout.cshtml", "Views/Shared/_Layout.cshtml")]
+        [InlineData("*Layout.cshtml", @"Views\Shared\_Layout.cshtml")]
+        [InlineData("*Views/Shared/_Layout.cshtml", "Views/Shared/_Layout.cshtml")]
         [Trait("Category", "unit")]
         public void ShouldIgnore(string pattern, string fileName)
         {
             // Assemble
-            var loggerMock = new Mock<ILogger>();
-
             var ignoreFileMock = new Mock<IIgnoreFile>();
             ignoreFileMock.Setup(i => i.Contents)
                           .Returns(new [] { pattern });
 
-            var ignorePatterns = new IgnorePatternCollection(ignoreFileMock.Object, loggerMock.Object);
+            var ignorePatterns = new IgnorePatternCollection(ignoreFileMock.Object);
 
             // Act
             var result = ignorePatterns.ShouldIgnore(fileName);
@@ -45,13 +47,11 @@ namespace domino.Test
         public void ShouldNotIgnore(string pattern, string fileName)
         {
             // Assemble
-            var loggerMock = new Mock<ILogger>();
-
             var ignoreFileMock = new Mock<IIgnoreFile>();
             ignoreFileMock.Setup(i => i.Contents)
                           .Returns(new [] { pattern });
 
-            var ignorePatterns = new IgnorePatternCollection(ignoreFileMock.Object, loggerMock.Object);
+            var ignorePatterns = new IgnorePatternCollection(ignoreFileMock.Object);
 
             // Act
             var result = ignorePatterns.ShouldIgnore(fileName);
