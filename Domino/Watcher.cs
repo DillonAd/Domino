@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 
 namespace domino
@@ -30,6 +31,7 @@ namespace domino
         public void Dispose()
         {
             Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         protected virtual void Dispose(bool disposing)
