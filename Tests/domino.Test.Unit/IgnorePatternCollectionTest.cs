@@ -22,13 +22,11 @@ namespace domino.Test
         public void ShouldIgnore(string pattern, string fileName)
         {
             // Assemble
-            var loggerMock = new Mock<ILogger>();
-
             var ignoreFileMock = new Mock<IIgnoreFile>();
             ignoreFileMock.Setup(i => i.Contents)
                           .Returns(new [] { pattern });
 
-            var ignorePatterns = new IgnorePatternCollection(ignoreFileMock.Object, loggerMock.Object);
+            var ignorePatterns = new IgnorePatternCollection(ignoreFileMock.Object);
 
             // Act
             var result = ignorePatterns.ShouldIgnore(fileName);
@@ -49,13 +47,11 @@ namespace domino.Test
         public void ShouldNotIgnore(string pattern, string fileName)
         {
             // Assemble
-            var loggerMock = new Mock<ILogger>();
-
             var ignoreFileMock = new Mock<IIgnoreFile>();
             ignoreFileMock.Setup(i => i.Contents)
                           .Returns(new [] { pattern });
 
-            var ignorePatterns = new IgnorePatternCollection(ignoreFileMock.Object, loggerMock.Object);
+            var ignorePatterns = new IgnorePatternCollection(ignoreFileMock.Object);
 
             // Act
             var result = ignorePatterns.ShouldIgnore(fileName);
