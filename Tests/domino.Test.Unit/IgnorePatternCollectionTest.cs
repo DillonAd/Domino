@@ -14,6 +14,11 @@ namespace domino.Test
         [InlineData("*File.log", "testFile.log")]
         [InlineData("te*le.log", "testFile.log")]
         [InlineData("testFile.l?g", "testFile.log")]
+        [InlineData("*_Layout.cshtml", "Views/Shared/_Layout.cshtml")]
+        [InlineData("*_Layout.cshtml", @"Views\Shared\_Layout.cshtml")]
+        [InlineData("*Layout.cshtml", "Views/Shared/_Layout.cshtml")]
+        [InlineData("*Layout.cshtml", @"Views\Shared\_Layout.cshtml")]
+        [InlineData("*Views/Shared/_Layout.cshtml", "Views/Shared/_Layout.cshtml")]
         [Trait("Category", "unit")]
         public void ShouldIgnore(string pattern, string fileName)
         {
