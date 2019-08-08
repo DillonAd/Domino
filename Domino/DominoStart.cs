@@ -24,6 +24,7 @@ namespace domino
                     services.AddTransient<ILogger, Logger>()
                             .AddSingleton(options => new CommanderOptions(ScriptName))
                             .AddSingleton<IIgnorePatternCollection, IgnorePatternCollection>()
+                            .AddSingleton<IIgnoreFile, IgnoreFile>()
                             .AddSingleton<ICommander, Commander>()
                             .AddSingleton<IWatcher, Watcher>()
                             .AddHostedService<WatcherHost>();
