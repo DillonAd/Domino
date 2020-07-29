@@ -17,7 +17,7 @@ stages:
         steps:
           - task: DotNetCoreInstaller@0
             inputs:
-              version: 3.1.x
+              version: 3.1.302
   
           - task: DotNetCoreCLI@2
             displayName: Restore
