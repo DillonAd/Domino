@@ -4,7 +4,7 @@
     <ToolCommandName>domino</ToolCommandName>
     <PackAsTool>True</PackAsTool>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Dillon Adams</Authors>
     <PackageProjectUrl>https://github.com/DillonAd/Domino</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DillonAd/Domino</RepositoryUrl>
