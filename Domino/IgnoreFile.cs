@@ -17,7 +17,15 @@ namespace domino
         {
             _logger = logger;
             string filePath = FindFile(Directory.GetCurrentDirectory());
-            Contents = File.ReadAllLines(filePath);
+
+            if (string.IsNullOrEmpty(filePath))
+            {
+                Contents = new List<string>();
+            }
+            else
+            {
+                Contents = File.ReadAllLines(filePath);
+            }
         }
 
         private string FindFile(string directory)
