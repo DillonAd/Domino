@@ -1,8 +1,12 @@
 name: $(Build.BuildId)
+
 trigger:
   - master
 pr:
   - master
+
+pool: Default
+
 variables:
   Artifact.Prod: NuGet
 
