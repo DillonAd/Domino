@@ -22,6 +22,7 @@ namespace domino
                 .ConfigureServices((context, services) =>
                 {
                     services.AddTransient<ILogger, Logger>()
+                            .Configure<ConsoleLifetimeOptions>(options => options.SuppressStatusMessages = true)   
                             .AddSingleton(options => new CommanderOptions(ScriptName))
                             .AddSingleton<IIgnorePatternCollection, IgnorePatternCollection>()
                             .AddSingleton<IIgnoreFile, IgnoreFile>()
