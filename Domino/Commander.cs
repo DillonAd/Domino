@@ -72,12 +72,9 @@ namespace domino
         {
             if (_process != null)
             {
-                if (!_process.HasExited)
-                {
-                    _process.Kill();
-                    _cancellationTokenSource.Cancel();
-                    _cancellationTokenSource.Dispose();
-                }
+                _process.Kill();
+                _cancellationTokenSource.Cancel();
+                _cancellationTokenSource.Dispose();
                 _process.Dispose();
             }
         }

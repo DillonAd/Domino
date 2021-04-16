@@ -9,13 +9,13 @@
     <PackageProjectUrl>https://github.com/DillonAd/Domino</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DillonAd/Domino</RepositoryUrl>
     <PackageTags>File Watcher</PackageTags>
-    <VersionPrefix>0.0.6</VersionPrefix>
+    <VersionPrefix>0.0.7</VersionPrefix>
     <VersionSuffix></VersionSuffix>
     <PackageLicenseUrl>https://github.com/DillonAd/Domino/blob/master/LICENSE</PackageLicenseUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/DillonAd/Domino/master/domino.png</PackageIconUrl>
-    <AssemblyVersion>0.0.6.0</AssemblyVersion>
-    <FileVersion>0.0.6.0</FileVersion>
-    <Version>0.0.6</Version>
+    <AssemblyVersion>0.0.7.0</AssemblyVersion>
+    <FileVersion>0.0.7.0</FileVersion>
+    <Version>0.0.7</Version>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
